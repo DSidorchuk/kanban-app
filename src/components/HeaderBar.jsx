@@ -9,8 +9,8 @@ import { Modal } from "./Modal";
 import { HandleBoard } from "../features/boards/HandleBoard";
 import { BoardMenu } from "./BoardMenu";
 import { DeleteModal } from "./Delete";
-// import { selectActiveBoard } from "../features/boards/boards-slice";
-import { selectActiveBoard } from "../features/task-slice";
+import { HandleTask } from "../features/boards/HandleTask";
+import { selectActiveBoard } from "../features/boards/boards-slice";
 
 
 
@@ -46,34 +46,37 @@ const DotsButton = styled(Dots)`
 
 const HeaderBar = () => {
    const {showSideBar} = useSelector(selectView);
-   // const activeBoard = useSelector(selectActiveBoard);
    const activeBoard = useSelector(selectActiveBoard);
 
    const [showModal, setShowModal] = useState(false);
    const [showBoardMenu, setShowBoardMenu] = useState(false);
    const [deleteBoard, setDeleteBoard] = useState(false);
+   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
    const toggleBoardMenu = () => {
       setShowBoardMenu(showBoardMenu ? false : true)
    }
-
    const closeModal = () => {
       setShowModal(false);
       if (deleteBoard) {
          setDeleteBoard(false)
       }
    }
-
    const openModal = () => {
       if(activeBoard) {
          setShowModal(true);
       }
       toggleBoardMenu();
    }
-
    const onDelete = () => {
       setDeleteBoard(true)
       openModal()
+   }
+   const openAddTaskModal = () => {
+      setShowAddTaskModal(true)
+   }
+   const closeAddTaskModal = () => {
+      setShowAddTaskModal(false)
    }
 
    
@@ -81,7 +84,11 @@ const HeaderBar = () => {
       <Wrapper showSideBar={showSideBar}>
          <Title>Platform Launch</Title>
          <Flex>
-            <WideButton>+ Add New Task</WideButton>
+            <WideButton 
+               onClick={openAddTaskModal}
+               disabled={activeBoard ? false : true}
+            >
+               + Add New Task</WideButton>
             <DotsButton onClick={toggleBoardMenu}/>
          </Flex>
          <BoardMenu 
@@ -101,6 +108,9 @@ const HeaderBar = () => {
                   />
 
             }
+         </Modal>
+         <Modal show={showAddTaskModal} onClose={closeAddTaskModal}>
+            <HandleTask onClose={closeAddTaskModal}/>
          </Modal>
       </Wrapper>
    )

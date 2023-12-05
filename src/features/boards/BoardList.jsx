@@ -2,23 +2,14 @@ import { styled } from "styled-components";
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from "react";
 
-// import { selectBoards, addToActive } from './boards-slice';
 import { ReactComponent as Icon } from '../../assets/BoardIcon.svg';
 import { Modal } from "../../components/Modal";
 import { HandleBoard } from "./HandleBoard";
-import { selectBoards, addBoardToActive } from "../task-slice";
+import { BoardTitle } from "../../ui/Titles";
+import { selectBoards, addBoardToActive } from "./boards-slice";
 
 const Wrapper = styled.div`
    width: 300px;
-`;
-
-const Title = styled.h5`
-   margin-top: 15px;
-   padding-left: 32px;
-   font-size: var(--fs-xs);
-   font-weight: var(--fw-bold);
-   letter-spacing: 2.4px;
-   color: var(--col-text-light);
 `;
 
 const List = styled.ul`
@@ -62,13 +53,9 @@ const CreateBordItem = styled(Item)`
 
 const BoardList = () => {
    const dispatch = useDispatch();
-   // const {list, active} = useSelector(selectBoards);
    const list = useSelector(selectBoards);
    const [showModal, setShowModal] = useState(false);
 
-   // const handleClick = (item) => {
-   //    dispatch(addToActive(item));
-   // }
    const handleClick = (id) => {
       dispatch(addBoardToActive(id));
    }
@@ -83,21 +70,8 @@ const BoardList = () => {
 
    return (
       <Wrapper>
-         <Title>ALL BOARDS ({list.length})</Title>
+         <BoardTitle>ALL BOARDS ({list.length})</BoardTitle>
          <List>
-            {/* {list.length > 0 && list.map((item) => {
-               const clazz = item === active ? 'active' : '';
-               return (
-                  <Item
-                     key={item.board} 
-                     className={clazz}
-                     onClick={() => handleClick(item)}
-                  >
-                     <Icon/>
-                     {item.board.name}
-                  </Item>
-               )
-            })} */}
             {list.length > 0 && list.map((board) => {
                const clazz = board.active ? 'active' : '';
                return (

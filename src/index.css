@@ -24,6 +24,7 @@
   --rad-md: 8px;
   --rad-ms: 6px;
   --rad-sm: 4px;
+  --rad-xs: 2px;
 
   --fs-xl: 24px;
   --fs-lg: 18px;
@@ -66,9 +67,11 @@ body[data-theme='light'] {
   --col-btn-sec: rgba(99, 95, 199, 0.10);
   --col-btn-sec-hov: rgba(99, 95, 199, 0.25);
   --col-checkbox: var(--light-grey-light-bg);
+  --col-checkbox-rect: var(--White);
   --col-text-dark: var(--Black);
   --col-line: var(--lines-light);
   --col-bg-addcol: linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.50) 100%);
+  --col-bg-task: var(--White);
 }
 
 body[data-theme='dark'] {
@@ -77,9 +80,11 @@ body[data-theme='dark'] {
   --col-btn-sec: var(--White);
   --col-btn-sec-hov: var(--White);
   --col-checkbox: var(--very-dark-grey-dark-bg);
+  --col-checkbox-rect: var(--Dark-Grey);
   --col-text-dark: var(--White);
   --col-line: var(--lines-dark);
   --col-bg-addcol: linear-gradient(180deg, rgba(43, 44, 55, 0.25) 0%, rgba(43, 44, 55, 0.13) 100%);
+  --col-bg-task: var(--Dark-Grey);
 }
 
 h1, button {

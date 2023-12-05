@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
 
 import { ReactComponent as ShowSideBar} from '../assets/ShowSideBarBtn.svg';
+import { ReactComponent as Cross } from '../assets/CrossBtn.svg';
+
 
 export const WideButton = styled.button`
    width: 164px;
@@ -70,7 +72,7 @@ export const CancelButton = styled(DeleteButton)`
    }
 `;
 
-export const AddColumnButton = styled.button`
+export const AddColumn = styled.button`
    width: 169px;
    height: 30px;
    text-align: center;
@@ -78,4 +80,14 @@ export const AddColumnButton = styled.button`
    font-size: var(--fs-xl);
    font-weight: var(--fw-bold);
    color: var(--col-text-light);
+   background-color: inherit;
+   cursor: pointer;
+`;
+
+export const AddColumnButton = styled(WideButton)`
+   width: 174px;
+`;
+
+export const CrossButton = styled(Cross)`
+   cursor: pointer;
 `;

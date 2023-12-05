@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
-export const Input = styled.input`
+export const InputText = styled.textarea`
    width: 416px;
-   height: 40px;
+   height: 112px;
    padding-left: 16px;
    font-size: var(--fs-sm);
    font-weight: var(--fw-light);
@@ -12,6 +12,7 @@ export const Input = styled.input`
    color: var(--col-text-dark);
    font-feature-settings: 'clig' off, 'liga' off;
    background-color: var(--col-bg-light);
+   resize: none;
 
    &::placeholder {
       opacity: 0.25;
@@ -23,8 +24,4 @@ export const Input = styled.input`
    &.empty {
       border: 1px solid var(--col-text-error);
    }
-`;
-
-export const ShortInput = styled(Input)`
-   width: 385px;
 `;
